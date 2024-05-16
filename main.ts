@@ -16,9 +16,9 @@ const agent = new BskyAgent({ service })
 
 await agent.login({ identifier, password })
 
-export const getSuggestions = async () => (await agent.api.app.bsky.actor.getSuggestions()).data
+const getSuggestions = async () => (await agent.api.app.bsky.actor.getSuggestions()).data
 
-export const getSuggestedFollowsByActor = async (actor: string) => (await agent.api.app.bsky.graph.getSuggestedFollowsByActor({ actor })).data
+const getSuggestedFollowsByActor = async (actor: string) => (await agent.api.app.bsky.graph.getSuggestedFollowsByActor({ actor })).data
 
 const handleGetSuggestions = async (context: Context) => {
 	return context.json(await getSuggestions())
