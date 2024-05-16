@@ -29,7 +29,7 @@ const handleGetSuggestedFollowsByActor = async (context: Context) => {
 }
 
 app.get('/getSuggestions', handleGetSuggestions)
-app.get('/handleGetSuggestions', handleGetSuggestedFollowsByActor)
+app.get('/getSuggestedFollowsByActor', handleGetSuggestedFollowsByActor)
 xrpc.get('/app.bsky.actor.getSuggestions', handleGetSuggestions)
 xrpc.get('/app.bsky.graph.getSuggestedFollowsByActor', handleGetSuggestedFollowsByActor)
 
