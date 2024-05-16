@@ -1,5 +1,6 @@
 import { BskyAgent } from "npm:@atproto/api"
 import { Hono, type Context } from 'npm:hono'
+import { cors } from 'npm:hono/cors'
 
 const service = Deno.env.get("BSKY_SERVICE") || "https://bsky.social"
 
@@ -34,5 +35,7 @@ xrpc.get('/app.bsky.actor.getSuggestions', handleGetSuggestions)
 xrpc.get('/app.bsky.graph.getSuggestedFollowsByActor', handleGetSuggestedFollowsByActor)
 
 app.route('/xrpc', xrpc)
+
+app.use(cors())
 
 Deno.serve(app.fetch)
