@@ -36,6 +36,8 @@ xrpc.get('/app.bsky.graph.getSuggestedFollowsByActor', handleGetSuggestedFollows
 
 app.route('/xrpc', xrpc)
 
+app.options('*', cors({ origin: '*' }))
+
 app.use('*', cors({ origin: '*' }))
 
 Deno.serve(app.fetch)
