@@ -28,6 +28,7 @@ const handleGetSuggestedFollowsByActor = async (context: Context) => {
 	const query = context.req.query('actor') as string
 	return context.json(await getSuggestedFollowsByActor(query))
 }
+app.use('*', cors({ origin: '*' }))
 
 app.get('/getSuggestions', handleGetSuggestions)
 app.get('/getSuggestedFollowsByActor', handleGetSuggestedFollowsByActor)
@@ -35,9 +36,5 @@ xrpc.get('/app.bsky.actor.getSuggestions', handleGetSuggestions)
 xrpc.get('/app.bsky.graph.getSuggestedFollowsByActor', handleGetSuggestedFollowsByActor)
 
 app.route('/xrpc', xrpc)
-
-app.options('*', cors({ origin: '*' }))
-
-app.use('*', cors({ origin: '*' }))
 
 Deno.serve(app.fetch)
